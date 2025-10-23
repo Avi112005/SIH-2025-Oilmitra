@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OILMITRA - Empowering Farmers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2D7A3E;
+            --primary-dark: #1f5428;
+            --accent: #D4A574;
+            --accent-light: #E8C4A0;
+            --bg-light: #FFFFFF;
+            --bg-light-secondary: #F5F5F5;
+            --text-light: #222222;
+            --text-light-secondary: #666666;
+            --bg-dark: #121212;
+            --bg-dark-secondary: #1E1E1E;
+            --text-dark: #F5F5F5;
+            --text-dark-secondary: #AAAAAA;
+            --border-light: #E0E0E0;
+            --border-dark: #333333;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        html[data-theme="light"] {
+            --bg: var(--bg-light);
+            --bg-secondary: var(--bg-light-secondary);
+            --text: var(--text-light);
+            --text-secondary: var(--text-light-secondary);
+            --border: var(--border-light);
+        }
+
+        html[data-theme="dark"] {
+            --bg: var(--bg-dark);
+            --bg-secondary: var(--bg-dark-secondary);
+            --text: var(--text-dark);
+            --text-secondary: var(--text-dark-secondary);
+            --border: var(--border-dark);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.5s ease, color 0.5s ease;
+            line-height: 1.6;
+        }
+
+        /* Header & Navbar */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--bg);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        #theme-toggle {
+            background: none;
+            border: 2px solid var(--border);
+            color: var(--text);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #theme-toggle:hover {
+            background-color: var(--bg-secondary);
+            transform: scale(1.1);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero .btn {
+            margin: 0 0.5rem;
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .section.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .card.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* Weather Advisory Card Styles */
+        .weather-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .weather-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .weather-location {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .weather-icon {
+            font-size: 2.5rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .weather-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .weather-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .weather-item-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .weather-item-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-bottom: 0.25rem;
+        }
+
+        .weather-item-value {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .weather-advisory {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .weather-advisory-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .weather-advisory-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            opacity: 0.95;
+        }
+
+        /* Crop Economics Dashboard Styles */
+        .economics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .economics-card {
+            background-color: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .economics-card.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .economics-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-8px);
+        }
+
+        .economics-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .economics-icon {
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 8px;
+        }
+
+        .economics-card h3 {
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .economics-card p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .economics-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 1rem;
+        }
+
+        .economics-subtext {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 12px rgba(45, 122, 62, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 122, 62, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            position: relative;
+        }
+
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            z-index: -1;
+            transition: left 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            color: white;
+        }
+
+        .btn-secondary:hover::before {
+            left: 0;
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple-animation 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Compare Crops Section */
+        .compare-form {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 600px;
+            margin: 2rem auto;
+            border: 1px solid var(--border);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background-color: var(--bg);
+            color: var(--text);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(45, 122, 62, 0.1);
+        }
+
+        #compare-results {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-card h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .result-item.highlight {
+            border-bottom: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+            font-size: 1.1rem;
+        }
+
+        .result-item strong {
+            font-weight: 700;
+        }
+
+        /* Schemes Section */
+        .scheme-card {
+            background-color: var(--bg-secondary);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        .scheme-card:hover {
+            border-left-color: var(--accent);
+            box-shadow: var(--shadow-hover);
+            transform: translateX(8px);
+        }
+
+        .scheme-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .scheme-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* FPO Section */
+        .fpo-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .fpo-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .fpo-card:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent);
+        }
+
+        .fpo-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .fpo-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .fpo-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: var(--bg);
+                border-bottom: 1px solid var(--border);
+                padding: 1rem;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 0.75rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .weather-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .economics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-right {
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .weather-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navbar -->
+    <header>
+        <nav>
+            <a href="#" class="logo">OILMITRA</a>
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#weather">Weather</a></li>
+                <li><a href="#economics">Economics</a></li>
+                <li><a href="#compare">Compare Crops</a></li>
+                <li><a href="#schemes">Schemes</a></li>
+                <li><a href="#fpo">FPO Connect</a></li>
+            </ul>
+            <div class="nav-right">
+                <button id="theme-toggle" title="Toggle theme">🌙</button>
+                <button class="menu-toggle" id="menu-toggle">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Empowering Farmers, Enriching Fields</h1>
+            <p>Smart solutions for sustainable agriculture and better crop profitability</p>
+            <button class="btn btn-primary">Get Started</button>
+            <button class="btn btn-secondary">Learn More</button>
+        </div>
+    </section>
+
+    <!-- Live Prices Section -->
+    <section class="section" id="prices">
+        <h2>Live Crop Prices</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">🥜</div>
+                <h3>Groundnut</h3>
+                <p>High-demand oilseed crop with excellent market value</p>
+                <div class="price-badge">₹5,000/qtl</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌾</div>
+                <h3>Mustard</h3>
+                <p>Premium quality mustard seeds for oil extraction</p>
+                <div class="price-badge">₹4,800/qtl</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌱</div>
+                <h3>Soybean</h3>
+                <p>Protein-rich crop with growing market demand</p>
+                <div class="price-badge">₹5,100/qtl</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weather-Based Advisory Section -->
+    <section class="section" id="weather">
+        <h2>Weather & Advisory</h2>
+        <div class="weather-card">
+            <div class="weather-header">
+                <div class="weather-location">📍 Nagpur, Maharashtra</div>
+                <div class="weather-icon">☀️</div>
+            </div>
+            <div class="weather-grid">
+                <div class="weather-item">
+                    <div class="weather-item-icon">🌡️</div>
+                    <div class="weather-item-label">Temperature</div>
+                    <div class="weather-item-value">32°C</div>
+                </div>
+                <div class="weather-item">
+                    <div class="weather-item-icon">💧</div>
+                    <div class="weather-item-label">Rainfall</div>
+                    <div class="weather-item-value">5mm</div>
+                </div>
+                <div class="weather-item">
+                    <div class="weather-item-icon">💨</div>
+                    <div class="weather-item-label">Humidity</div>
+                    <div class="weather-item-value">60%</div>
+                </div>
+                <div class="weather-item">
+                    <div class="weather-item-icon">🌬️</div>
+                    <div class="weather-item-label">Wind Speed</div>
+                    <div class="weather-item-value">12 km/h</div>
+                </div>
+            </div>
+            <div class="weather-advisory">
+                <div class="weather-advisory-title">📋 Farming Advisory</div>
+                <div class="weather-advisory-text">Good time to sow soybean. Irrigation recommended for groundnut. Avoid pesticide application due to low wind speed. Monitor soil moisture levels.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Crop Economics Dashboard Section -->
+    <section class="section" id="economics">
+        <h2>Crop Economics Dashboard</h2>
+        <div class="economics-grid">
+            <div class="economics-card">
+                <div class="economics-card-header">
+                    <div class="economics-icon">💰</div>
+                    <div>
+                        <h3>Profit per Hectare</h3>
+                        <p>Average across all crops</p>
+                    </div>
+                </div>
+                <div class="economics-value">₹45,000</div>
+                <div class="economics-subtext">↑ 12% from last season</div>
+            </div>
+            <div class="economics-card">
+                <div class="economics-card-header">
+                    <div class="economics-icon">📊</div>
+                    <div>
+                        <h3>Input Costs</h3>
+                        <p>Seeds, fertilizers, labor</p>
+                    </div>
+                </div>
+                <div class="economics-value">₹18,500</div>
+                <div class="economics-subtext">Per hectare average</div>
+            </div>
+            <div class="economics-card">
+                <div class="economics-card-header">
+                    <div class="economics-icon">📈</div>
+                    <div>
+                        <h3>Historical Yield</h3>
+                        <p>3-year average</p>
+                    </div>
+                </div>
+                <div class="economics-value">4.8 qtl/ha</div>
+                <div class="economics-subtext">Groundnut average</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compare Crops Section -->
+    <section class="section" id="compare">
+        <h2>Compare Crops Profitability</h2>
+        <form class="compare-form" id="compare-form">
+            <div class="form-group">
+                <label for="crop-select">Select Crop</label>
+                <select id="crop-select" required>
+                    <option value="">Choose a crop...</option>
+                    <option value="groundnut">Groundnut</option>
+                    <option value="mustard">Mustard</option>
+                    <option value="soybean">Soybean</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="area-input">Area (hectares)</label>
+                <input type="number" id="area-input" placeholder="Enter area in hectares" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label for="yield-input">Expected Yield (qtl/hectare)</label>
+                <input type="number" id="yield-input" placeholder="Enter expected yield" step="0.1" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Calculate Profitability</button>
+        </form>
+        <div id="compare-results"></div>
+    </section>
+
+    <!-- Schemes Section -->
+    <section class="section" id="schemes">
+        <h2>Government Schemes</h2>
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div class="scheme-card">
+                <h3>NMEO-OS (National Mission on Edible Oils)</h3>
+                <p>Subsidy on seeds and fertilizers for oilseed farmers. Covers up to 50% of input costs.</p>
+                <button class="btn btn-secondary">View Details</button>
+            </div>
+            <div class="scheme-card">
+                <h3>PMFBY (Pradhan Mantri Fasal Bima Yojana)</h3>
+                <p>Comprehensive crop insurance scheme protecting farmers against crop losses due to natural calamities.</p>
+                <button class="btn btn-secondary">View Details</button>
+            </div>
+            <div class="scheme-card">
+                <h3>State Seed Subsidy Program</h3>
+                <p>Direct subsidy on certified seeds for improved crop varieties. Up to 40% discount on quality seeds.</p>
+                <button class="btn btn-secondary">View Details</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FPO Connect Section -->
+    <section class="section" id="fpo">
+        <h2>FPO Connect</h2>
+        <div class="fpo-list">
+            <div class="fpo-card">
+                <div class="fpo-icon">🌾</div>
+                <h3>Sunrise Oilseeds FPO</h3>
+                <p>Established 2015 | 500+ Members | Maharashtra</p>
+                <p style="font-size: 0.85rem; color: var(--accent);">⭐ 4.8/5 Rating</p>
+                <button class="btn btn-primary">Connect</button>
+            </div>
+            <div class="fpo-card">
+                <div class="fpo-icon">🌱</div>
+                <h3>GreenGrow Cooperative</h3>
+                <p>Established 2018 | 350+ Members | Madhya Pradesh</p>
+                <p style="font-size: 0.85rem; color: var(--accent);">⭐ 4.6/5 Rating</p>
+                <button class="btn btn-primary">Connect</button>
+            </div>
+            <div class="fpo-card">
+                <div class="fpo-icon">🥜</div>
+                <h3>Harvest Hub</h3>
+                <p>Established 2016 | 600+ Members | Karnataka</p>
+                <p style="font-size: 0.85rem; color: var(--accent);">⭐ 4.9/5 Rating</p>
+                <button class="btn btn-primary">Connect</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 OILMITRA. Empowering farmers through technology and innovation.</p>
+    </footer>
+
+    <script>
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggle.textContent = newTheme === 'light' ? '🌙' : '☀️';
+        });
+
+        // Update theme toggle icon on load
+        themeToggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Compare crops form
+        const compareForm = document.getElementById('compare-form');
+        compareForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const crop = document.getElementById('crop-select').value;
+            const area = parseFloat(document.getElementById('area-input').value);
+            const yield_ = parseFloat(document.getElementById('yield-input').value);
+
+            if (!crop || !area || !yield_) {
+                alert('Please fill all fields');
+                return;
+            }
+
+            // Mock calculation with INR currency
+            const cropData = {
+                groundnut: { costPerQtl: 3500, pricePerQtl: 5000 },
+                mustard: { costPerQtl: 3200, pricePerQtl: 4800 },
+                soybean: { costPerQtl: 3800, pricePerQtl: 5100 }
+            };
+
+            const data = cropData[crop];
+            const totalYield = area * yield_;
+            const totalCost = totalYield * data.costPerQtl;
+            const totalRevenue = totalYield * data.pricePerQtl;
+            const netIncome = totalRevenue - totalCost;
+
+            const resultsDiv = document.getElementById('compare-results');
+            resultsDiv.innerHTML = `
+                <div class="result-card">
+                    <h3>Profitability Analysis</h3>
+                    <div class="result-item">
+                        <span>Total Yield:</span>
+                        <strong>${totalYield.toFixed(2)} qtl</strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Total Cost:</span>
+                        <strong>₹${totalCost.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Total Revenue:</span>
+                        <strong>₹${totalRevenue.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</strong>
+                    </div>
+                    <div class="result-item highlight">
+                        <span>Net Expected Income:</span>
+                        <strong>₹${netIncome.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</strong>
+                    </div>
+                </div>
+            `;
+            resultsDiv.style.display = 'block';
+        });
+
+        // Ripple effect on buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+
+                this.appendChild(ripple);
+
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Intersection observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section, .card, .economics-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
