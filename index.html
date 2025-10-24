@@ -201,6 +201,289 @@
             margin: 0 0.5rem;
         }
 
+        /* Add modal styles for Get Started and Learn More buttons */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background-color: var(--bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .modal-header h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .modal-close:hover {
+            background-color: var(--bg-secondary);
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            color: var(--text);
+        }
+
+        .step-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding: 1.25rem;
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .step-item:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow);
+            border-left-color: var(--accent);
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            color: var(--primary);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .step-content p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .crops-highlight {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(45, 122, 62, 0.1), rgba(212, 165, 116, 0.1));
+            border-radius: 12px;
+            border: 2px solid var(--border);
+        }
+
+        .crop-badge {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--bg);
+            border-radius: 8px;
+            border: 2px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .crop-badge:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-hover);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .crop-badge-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .crop-badge-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-box {
+            padding: 1.25rem;
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .feature-box:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .modal-footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--border);
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .modal-footer .btn {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 1.5rem;
+                max-width: 95%;
+            }
+
+            .modal-header h2 {
+                font-size: 1.4rem;
+            }
+
+            .crops-highlight {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .step-item {
+                gap: 1rem;
+            }
+
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .modal-footer {
+                flex-direction: column;
+            }
+
+            .modal-footer .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal-content {
+                padding: 1.25rem;
+            }
+
+            .modal-header h2 {
+                font-size: 1.2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step-item {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .step-number {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+        }
+
         /* Sections */
         .section {
             padding: 4rem 2rem;
@@ -768,6 +1051,485 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Hide v0 branding badge */
+        iframe[src*="v0"],
+        [data-v0-badge],
+        [class*="v0-badge"],
+        [id*="v0-badge"],
+        .vercel-badge,
+        [class*="vercel-badge"] {
+            display: none !important;
+        }
+
+        /* Add styles for Market Intelligence section */
+        .market-section {
+            margin-top: 2rem;
+        }
+
+        .location-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .location-selector select {
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background-color: var(--bg);
+            color: var(--text);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .location-selector select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(45, 122, 62, 0.1);
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .price-table thead {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .price-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .price-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .price-table tbody tr:hover {
+            background-color: var(--bg);
+        }
+
+        .price-change {
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .price-up {
+            color: #27ae60;
+            background-color: rgba(39, 174, 96, 0.1);
+        }
+
+        .price-down {
+            color: #e74c3c;
+            background-color: rgba(231, 76, 60, 0.1);
+        }
+
+        .price-alert {
+            background: linear-gradient(135deg, #FF6B35, #FF8C42);
+            color: white;
+            padding: 1.25rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: slideIn 0.5s ease;
+            border-left: 5px solid #FF4500;
+            box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-alert::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FF4500, #FF6B35, #FF8C42);
+            animation: shimmer 2s infinite;
+        }
+
+        .price-alert-icon {
+            font-size: 1.8rem;
+            animation: pulse 2s infinite;
+            flex-shrink: 0;
+        }
+
+        .price-alert-content h4 {
+            margin-bottom: 0.25rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .price-alert-content p {
+            font-size: 0.95rem;
+            opacity: 0.98;
+            font-weight: 500;
+        }
+
+        /* Dark mode adjustments for price alert */
+        body.dark-mode .price-alert {
+            background: linear-gradient(135deg, #FF5722, #FF7043);
+            box-shadow: 0 8px 24px rgba(255, 87, 34, 0.4);
+            border-left-color: #FF3D00;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Add styles for Gamification */
+        .gamification-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .gamification-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .badges-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .badge {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .badge:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .badge.locked {
+            opacity: 0.5;
+            filter: grayscale(100%);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        /* Add styles for Enhanced Weather Section */
+        .weather-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .custom-dropdown {
+            position: relative;
+            width: 100%;
+        }
+
+        .dropdown-trigger {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg));
+            color: var(--text);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dropdown-trigger::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .dropdown-trigger:hover::before {
+            left: 100%;
+        }
+
+        .dropdown-trigger:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 16px rgba(45, 122, 62, 0.15);
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, var(--bg), var(--bg-secondary));
+        }
+
+        .dropdown-trigger.active {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 8px 24px rgba(45, 122, 62, 0.25);
+        }
+
+        .dropdown-trigger.active .dropdown-arrow {
+            transform: rotate(180deg);
+            color: white;
+        }
+
+        .dropdown-trigger.active .dropdown-icon {
+            color: white;
+        }
+
+        .dropdown-icon {
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .dropdown-text {
+            flex: 1;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .dropdown-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text-secondary);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            left: 0;
+            right: 0;
+            background-color: var(--bg-secondary);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-10px) scaleY(0.95);
+            transform-origin: top;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .dropdown-menu.active {
+            max-height: 400px;
+            opacity: 1;
+            transform: translateY(0) scaleY(1);
+            pointer-events: auto;
+            overflow-y: auto;
+        }
+
+        .dropdown-menu::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .dropdown-menu::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .dropdown-menu::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        .dropdown-menu::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        .dropdown-option {
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text);
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dropdown-option::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.2s ease;
+        }
+
+        .dropdown-option:hover {
+            background: linear-gradient(90deg, rgba(45, 122, 62, 0.1), transparent);
+            padding-left: 1.5rem;
+        }
+
+        .dropdown-option:hover::before {
+            transform: scaleY(1);
+        }
+
+        .dropdown-option.selected {
+            background: linear-gradient(90deg, rgba(45, 122, 62, 0.15), transparent);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .dropdown-option.selected::after {
+            content: '✓';
+            margin-left: auto;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .dropdown-option:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-option-icon {
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        .weather-selector select {
+            display: none;
+        }
+
+        /* Add styles for Crop Comparison Table */
+        .crop-comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .crop-comparison-table thead {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .crop-comparison-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .crop-comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .crop-comparison-table tbody tr:hover {
+            background-color: var(--bg);
+        }
+
+        .crop-best {
+            color: #27ae60;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -777,11 +1539,12 @@
             <a href="#" class="logo">OILMITRA</a>
             <ul class="nav-links" id="nav-menu">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#market">Market</a></li>
                 <li><a href="#weather">Weather</a></li>
                 <li><a href="#economics">Economics</a></li>
-                <li><a href="#compare">Compare Crops</a></li>
+                <li><a href="#compare">Compare</a></li>
                 <li><a href="#schemes">Schemes</a></li>
-                <li><a href="#fpo">FPO Connect</a></li>
+                <li><a href="#fpo">FPO</a></li>
             </ul>
             <div class="nav-right">
                 <button id="theme-toggle" title="Toggle theme">🌙</button>
@@ -795,8 +1558,160 @@
         <div class="hero-content">
             <h1>Empowering Farmers, Enriching Fields</h1>
             <p>Smart solutions for sustainable agriculture and better crop profitability</p>
+            <button class="btn btn-primary">Get Started</button>
+            <button class="btn btn-secondary">Learn More</button>
         </div>
     </section>
+
+    <!-- Add Get Started Modal -->
+    <div class="modal" id="getStartedModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🚀 Get Started with OILMITRA</h2>
+                <button class="modal-close" onclick="closeModal('getStartedModal')">✕</button>
+            </div>
+            <div class="modal-body">
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">Follow these simple steps to unlock the full potential of OILMITRA and make informed farming decisions.</p>
+
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Select Your Location</h3>
+                        <p>Choose your state and city/district from the dropdowns in the Market Intelligence and Weather sections. This helps us provide location-specific insights.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>View Daily Market Prices</h3>
+                        <p>Check real-time prices for Groundnut, Mustard, and Soybean in your region. Monitor 24-hour price changes and weekly trends to identify the best selling opportunities.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Check Weather Advisories</h3>
+                        <p>Get location-based weather forecasts and farming advisories. Understand temperature, rainfall, humidity, and wind conditions to plan your farming activities.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Compare Crop Profitability</h3>
+                        <p>Use our profitability simulator to calculate expected income. Input your crop type, area, and expected yield to see projected profits.</p>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem;">Crops We Cover</h3>
+                <div class="crops-highlight">
+                    <div class="crop-badge">
+                        <div class="crop-badge-icon">🥜</div>
+                        <div class="crop-badge-name">Groundnut</div>
+                    </div>
+                    <div class="crop-badge">
+                        <div class="crop-badge-icon">🌾</div>
+                        <div class="crop-badge-name">Mustard</div>
+                    </div>
+                    <div class="crop-badge">
+                        <div class="crop-badge-icon">🌱</div>
+                        <div class="crop-badge-name">Soybean</div>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem;">Real-Time Features</h3>
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon">📊</div>
+                        <p class="feature-title">Price Alerts</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">🌦️</div>
+                        <p class="feature-title">Weather Data</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">💰</div>
+                        <p class="feature-title">Profit Calc</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">🏛️</div>
+                        <p class="feature-title">Schemes</p>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" onclick="closeModal('getStartedModal')">Close</button>
+                    <button class="btn btn-primary" onclick="startExploring()">Start Exploring</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Learn More Modal -->
+    <div class="modal" id="learnMoreModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>💡 About OILMITRA</h2>
+                <button class="modal-close" onclick="closeModal('learnMoreModal')">✕</button>
+            </div>
+            <div class="modal-body">
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.6;">OILMITRA is a comprehensive agricultural intelligence platform designed to empower farmers with data-driven insights for sustainable farming and better crop profitability.</p>
+
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">What We Offer</h3>
+
+                <div class="step-item">
+                    <div class="step-number" style="background: linear-gradient(135deg, #27ae60, #229954);">📊</div>
+                    <div class="step-content">
+                        <h3>Comparative Crop Economics</h3>
+                        <p>Analyze yield, input costs, and profitability across Groundnut, Mustard, and Soybean. Make informed decisions about which crops to cultivate based on real market data and historical performance.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number" style="background: linear-gradient(135deg, #3498db, #2980b9);">🏛️</div>
+                    <div class="step-content">
+                        <h3>Government Schemes & Incentives</h3>
+                        <p>Access information about NMEO-OS, PMFBY, and state seed subsidy programs. Unlock benefits and subsidies tailored to your crops and location, maximizing your returns.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">🌦️</div>
+                    <div class="step-content">
+                        <h3>Weather-Based Advisories</h3>
+                        <p>Receive location-specific weather forecasts and farming recommendations. Plan irrigation, pesticide application, and harvesting based on real-time weather conditions and expert advice.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number" style="background: linear-gradient(135deg, #f39c12, #e67e22);">💹</div>
+                    <div class="step-content">
+                        <h3>Market Intelligence & Price Alerts</h3>
+                        <p>Monitor daily crop prices, market trends, and demand patterns. Receive instant alerts when prices surge, helping you time your sales for maximum profit.</p>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(45, 122, 62, 0.15), rgba(212, 165, 116, 0.15)); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--primary); margin-top: 1.5rem;">
+                    <h3 style="color: var(--primary); margin-top: 0;">Why Choose OILMITRA?</h3>
+                    <ul style="margin: 1rem 0 0 0; padding-left: 1.5rem; color: var(--text-secondary);">
+                        <li style="margin-bottom: 0.5rem;">✓ Real-time market data and weather information</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Personalized farming recommendations</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Government scheme guidance and support</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Profitability analysis and crop comparison</li>
+                        <li style="margin-bottom: 0.5rem;">✓ FPO and buyer connections</li>
+                        <li>✓ Gamification to encourage engagement and learning</li>
+                    </ul>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" onclick="closeModal('learnMoreModal')">Close</button>
+                    <button class="btn btn-primary" onclick="scrollToSection('market')">Explore Features</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Live Prices Section -->
     <section class="section" id="prices">
@@ -823,44 +1738,183 @@
         </div>
     </section>
 
-    <!-- Weather-Based Advisory Section -->
+    <!-- Market Intelligence & Price Alerts Section -->
+    <section class="section market-section" id="market">
+        <h2>Market Intelligence & Price Alerts</h2>
+        
+        <div class="location-selector">
+            <div class="custom-dropdown">
+                <div class="dropdown-trigger" onclick="toggleDropdown(this)">
+                    <span class="dropdown-icon">📍</span>
+                    <span class="dropdown-text">Select State</span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-menu">
+                    <div class="dropdown-option" onclick="selectMarketState(this, 'maharashtra', 'Maharashtra')">
+                        <span class="dropdown-option-icon">🏛️</span>
+                        <span>Maharashtra</span>
+                    </div>
+                    <div class="dropdown-option" onclick="selectMarketState(this, 'madhya-pradesh', 'Madhya Pradesh')">
+                        <span class="dropdown-option-icon">🏛️</span>
+                        <span>Madhya Pradesh</span>
+                    </div>
+                    <div class="dropdown-option" onclick="selectMarketState(this, 'karnataka', 'Karnataka')">
+                        <span class="dropdown-option-icon">🏛️</span>
+                        <span>Karnataka</span>
+                    </div>
+                    <div class="dropdown-option" onclick="selectMarketState(this, 'andhra-pradesh', 'Andhra Pradesh')">
+                        <span class="dropdown-option-icon">🏛️</span>
+                        <span>Andhra Pradesh</span>
+                    </div>
+                    <div class="dropdown-option" onclick="selectMarketState(this, 'rajasthan', 'Rajasthan')">
+                        <span class="dropdown-option-icon">🏛️</span>
+                        <span>Rajasthan</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-dropdown">
+                <div class="dropdown-trigger" onclick="toggleDropdown(this)" id="market-city-dropdown-trigger">
+                    <span class="dropdown-icon">🏙️</span>
+                    <span class="dropdown-text">Select City/District</span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-menu" id="market-city-dropdown-menu">
+                    <div class="dropdown-option" style="color: var(--text-secondary); cursor: default;">
+                        <span>Select a state first</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Crop</th>
+                    <th>Current Price (₹/qtl)</th>
+                    <th>24h Change</th>
+                    <th>Weekly Trend</th>
+                    <th>Market Status</th>
+                </tr>
+            </thead>
+            <tbody id="price-table-body">
+                <tr>
+                    <td><strong>Groundnut</strong></td>
+                    <td>₹5,000</td>
+                    <td><span class="price-change price-up">↑ +2.5%</span></td>
+                    <td>📈 Bullish</td>
+                    <td>High Demand</td>
+                </tr>
+                <tr>
+                    <td><strong>Mustard</strong></td>
+                    <td>₹4,800</td>
+                    <td><span class="price-change price-down">↓ -1.2%</span></td>
+                    <td>📉 Bearish</td>
+                    <td>Moderate</td>
+                </tr>
+                <tr>
+                    <td><strong>Soybean</strong></td>
+                    <td>₹5,100</td>
+                    <td><span class="price-change price-up">↑ +3.1%</span></td>
+                    <td>📈 Bullish</td>
+                    <td>Very High</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="price-alert">
+            <div class="price-alert-icon">🔔</div>
+            <div class="price-alert-content">
+                <h4>Price Alert: Groundnut Surge!</h4>
+                <p>Groundnut prices have increased by 2.5% in the last 24 hours. This is a good time to sell if you have surplus stock.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weather-Based Advisory Section with Location Selection -->
     <section class="section" id="weather">
         <h2>Weather & Advisory</h2>
+        
+        <div class="weather-selector">
+            <div class="custom-dropdown">
+                <div class="dropdown-trigger" onclick="toggleDropdown(this)">
+                    <span class="dropdown-icon">📍</span>
+                    <span class="dropdown-text">Select State</span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-menu">
+                    <div class="dropdown-option" onclick="selectState(this, 'maharashtra', 'Maharashtra')">
+                        <span class="dropdown-option-icon">🏛️</span>
+                        <span>Maharashtra</span>
+                    </div>
+                    <div class="dropdown-option" onclick="selectState(this, 'madhya-pradesh', 'Madhya Pradesh')">
+                        <span class="dropdown-option-icon">🏛️</span>
+                        <span>Madhya Pradesh</span>
+                    </div>
+                    <div class="dropdown-option" onclick="selectState(this, 'karnataka', 'Karnataka')">
+                        <span class="dropdown-option-icon">🏛️</span>
+                        <span>Karnataka</span>
+                    </div>
+                    <div class="dropdown-option" onclick="selectState(this, 'andhra-pradesh', 'Andhra Pradesh')">
+                        <span class="dropdown-option-icon">🏛️</span>
+                        <span>Andhra Pradesh</span>
+                    </div>
+                    <div class="dropdown-option" onclick="selectState(this, 'rajasthan', 'Rajasthan')">
+                        <span class="dropdown-option-icon">🏛️</span>
+                        <span>Rajasthan</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-dropdown">
+                <div class="dropdown-trigger" onclick="toggleDropdown(this)" id="city-dropdown-trigger">
+                    <span class="dropdown-icon">🏙️</span>
+                    <span class="dropdown-text">Select City/District</span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-menu" id="city-dropdown-menu">
+                    <div class="dropdown-option" style="color: var(--text-secondary); cursor: default;">
+                        <span>Select a state first</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="weather-card">
             <div class="weather-header">
-                <div class="weather-location">📍 Nagpur, Maharashtra</div>
-                <div class="weather-icon">☀️</div>
+                <div class="weather-location" id="weather-location">📍 Nagpur, Maharashtra</div>
+                <div class="weather-icon" id="weather-icon">☀️</div>
             </div>
             <div class="weather-grid">
                 <div class="weather-item">
                     <div class="weather-item-icon">🌡️</div>
                     <div class="weather-item-label">Temperature</div>
-                    <div class="weather-item-value">32°C</div>
+                    <div class="weather-item-value" id="temp-value">32°C</div>
                 </div>
                 <div class="weather-item">
                     <div class="weather-item-icon">💧</div>
                     <div class="weather-item-label">Rainfall</div>
-                    <div class="weather-item-value">5mm</div>
+                    <div class="weather-item-value" id="rainfall-value">5mm</div>
                 </div>
                 <div class="weather-item">
                     <div class="weather-item-icon">💨</div>
                     <div class="weather-item-label">Humidity</div>
-                    <div class="weather-item-value">60%</div>
+                    <div class="weather-item-value" id="humidity-value">60%</div>
                 </div>
                 <div class="weather-item">
                     <div class="weather-item-icon">🌬️</div>
                     <div class="weather-item-label">Wind Speed</div>
-                    <div class="weather-item-value">12 km/h</div>
+                    <div class="weather-item-value" id="wind-value">12 km/h</div>
                 </div>
             </div>
             <div class="weather-advisory">
                 <div class="weather-advisory-title">📋 Farming Advisory</div>
-                <div class="weather-advisory-text">Good time to sow soybean. Irrigation recommended for groundnut. Avoid pesticide application due to low wind speed. Monitor soil moisture levels.</div>
+                <div class="weather-advisory-text" id="advisory-text">Good time to sow soybean. Irrigation recommended for groundnut. Avoid pesticide application due to low wind speed. Monitor soil moisture levels.</div>
             </div>
         </div>
     </section>
 
-    <!-- Crop Economics Dashboard Section -->
+    <!-- Crop Economics Dashboard with Comparative Analysis -->
     <section class="section" id="economics">
         <h2>Crop Economics Dashboard</h2>
         <div class="economics-grid">
@@ -898,6 +1952,42 @@
                 <div class="economics-subtext">Groundnut average</div>
             </div>
         </div>
+
+        <h3 style="margin-top: 3rem; margin-bottom: 1.5rem; color: var(--primary); text-align: center;">Crop Comparison Analysis</h3>
+        <table class="crop-comparison-table">
+            <thead>
+                <tr>
+                    <th>Crop</th>
+                    <th>Yield (qtl/ha)</th>
+                    <th>Input Cost (₹/ha)</th>
+                    <th>Market Price (₹/qtl)</th>
+                    <th>Profit/ha (₹)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Groundnut</strong></td>
+                    <td>4.8</td>
+                    <td>₹18,500</td>
+                    <td>₹5,000</td>
+                    <td class="crop-best">₹5,500</td>
+                </tr>
+                <tr>
+                    <td><strong>Mustard</strong></td>
+                    <td>3.2</td>
+                    <td>₹16,200</td>
+                    <td>₹4,800</td>
+                    <td>₹3,160</td>
+                </tr>
+                <tr>
+                    <td><strong>Soybean</strong></td>
+                    <td>4.5</td>
+                    <td>₹19,000</td>
+                    <td>₹5,100</td>
+                    <td class="crop-best">₹4,950</td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 
     <!-- Compare Crops Section -->
@@ -926,23 +2016,55 @@
         <div id="compare-results"></div>
     </section>
 
-    <!-- Schemes Section -->
+    <!-- Government Schemes with Gamification -->
     <section class="section" id="schemes">
-        <h2>Government Schemes</h2>
-        <div style="max-width: 900px; margin: 0 auto;">
+        <h2>Government Schemes & Incentives</h2>
+        
+        <div class="gamification-section">
+            <h3>Your Engagement Progress</h3>
+            <div class="gamification-stats">
+                <div class="stat-box">
+                    <div class="stat-number" id="points-display">450</div>
+                    <div class="stat-label">Points Earned</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="schemes-unlocked">2</div>
+                    <div class="stat-label">Schemes Unlocked</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="level-display">Level 3</div>
+                    <div class="stat-label">Farmer Level</div>
+                </div>
+            </div>
+            <div class="badges-container" id="badges-container">
+                <div class="badge" title="Early Adopter">🌱</div>
+                <div class="badge" title="Market Savvy">📊</div>
+                <div class="badge locked" title="Locked - Reach Level 5">🏆</div>
+                <div class="badge locked" title="Locked - Explore 5 schemes">🎯</div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 60%;"></div>
+            </div>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">60% to next level</p>
+        </div>
+
+        <div style="max-width: 900px; margin: 2rem auto 0;">
             <div class="scheme-card">
                 <h3>NMEO-OS (National Mission on Edible Oils)</h3>
-                <p>Subsidy on seeds and fertilizers for oilseed farmers. Covers up to 50% of input costs.</p>
+                <p>Subsidy on seeds and fertilizers for oilseed farmers. Covers up to 50% of input costs. Applicable for Groundnut, Mustard, and Soybean cultivation.</p>
+                <p style="font-size: 0.85rem; color: var(--accent); margin-top: 0.5rem;">💰 Potential Benefit: ₹9,250/hectare</p>
                 <button class="btn btn-secondary">View Details</button>
             </div>
             <div class="scheme-card">
                 <h3>PMFBY (Pradhan Mantri Fasal Bima Yojana)</h3>
-                <p>Comprehensive crop insurance scheme protecting farmers against crop losses due to natural calamities.</p>
+                <p>Comprehensive crop insurance scheme protecting farmers against crop losses due to natural calamities, pests, and diseases. Premium: 2% for farmers.</p>
+                <p style="font-size: 0.85rem; color: var(--accent); margin-top: 0.5rem;">🛡️ Coverage: Up to ₹2,50,000 per hectare</p>
                 <button class="btn btn-secondary">View Details</button>
             </div>
             <div class="scheme-card">
                 <h3>State Seed Subsidy Program</h3>
-                <p>Direct subsidy on certified seeds for improved crop varieties. Up to 40% discount on quality seeds.</p>
+                <p>Direct subsidy on certified seeds for improved crop varieties. Up to 40% discount on quality seeds. Ensures better germination and yield.</p>
+                <p style="font-size: 0.85rem; color: var(--accent); margin-top: 0.5rem;">🌾 Savings: ₹2,000-3,000/hectare</p>
                 <button class="btn btn-secondary">View Details</button>
             </div>
         </div>
@@ -982,7 +2104,54 @@
     </footer>
 
     <script>
-        // Initialize theme
+        const locationData = {
+            maharashtra: {
+                cities: ['Nagpur', 'Pune', 'Aurangabad', 'Nashik'],
+                weather: {
+                    'Nagpur': { temp: 32, rainfall: 5, humidity: 60, wind: 12, advisory: 'Good time to sow soybean. Irrigation recommended for groundnut. Avoid pesticide application due to low wind speed. Monitor soil moisture levels.' },
+                    'Pune': { temp: 28, rainfall: 8, humidity: 65, wind: 15, advisory: 'Moderate weather conditions. Suitable for mustard cultivation. Ensure proper drainage in fields.' },
+                    'Aurangabad': { temp: 35, rainfall: 2, humidity: 45, wind: 10, advisory: 'High temperature alert. Increase irrigation frequency. Mulching recommended to retain soil moisture.' },
+                    'Nashik': { temp: 30, rainfall: 6, humidity: 58, wind: 14, advisory: 'Favorable conditions for all oilseed crops. Monitor for pest activity.' }
+                }
+            },
+            'madhya-pradesh': {
+                cities: ['Indore', 'Bhopal', 'Jabalpur', 'Gwalior'],
+                weather: {
+                    'Indore': { temp: 33, rainfall: 4, humidity: 55, wind: 11, advisory: 'Dry conditions. Increase irrigation for groundnut. Check soil moisture regularly.' },
+                    'Bhopal': { temp: 31, rainfall: 7, humidity: 62, wind: 13, advisory: 'Good weather for crop growth. Suitable for all three oilseed crops.' },
+                    'Jabalpur': { temp: 34, rainfall: 3, humidity: 50, wind: 9, advisory: 'Hot and dry. Provide supplementary irrigation. Mulch fields to conserve moisture.' },
+                    'Gwalior': { temp: 32, rainfall: 5, humidity: 58, wind: 12, advisory: 'Moderate conditions. Suitable for soybean and mustard cultivation.' }
+                }
+            },
+            'karnataka': {
+                cities: ['Bangalore', 'Belgaum', 'Mysore', 'Hubli'],
+                weather: {
+                    'Bangalore': { temp: 28, rainfall: 10, humidity: 70, wind: 16, advisory: 'Adequate rainfall. Good for all crops. Monitor for fungal diseases.' },
+                    'Belgaum': { temp: 32, rainfall: 6, humidity: 60, wind: 14, advisory: 'Favorable for groundnut and soybean. Ensure proper field drainage.' },
+                    'Mysore': { temp: 29, rainfall: 9, humidity: 68, wind: 15, advisory: 'Good moisture levels. Suitable for mustard and soybean cultivation.' },
+                    'Hubli': { temp: 33, rainfall: 5, humidity: 55, wind: 12, advisory: 'Moderate conditions. Increase irrigation for groundnut crops.' }
+                }
+            },
+            'andhra-pradesh': {
+                cities: ['Hyderabad', 'Vijayawada', 'Visakhapatnam', 'Tirupati'],
+                weather: {
+                    'Hyderabad': { temp: 34, rainfall: 4, humidity: 52, wind: 11, advisory: 'Hot and dry. Provide adequate irrigation. Mulching recommended.' },
+                    'Vijayawada': { temp: 33, rainfall: 6, humidity: 65, wind: 13, advisory: 'Moderate weather. Suitable for all oilseed crops. Monitor pest activity.' },
+                    'Visakhapatnam': { temp: 30, rainfall: 8, humidity: 72, wind: 18, advisory: 'High humidity. Ensure good field drainage. Watch for fungal diseases.' },
+                    'Tirupati': { temp: 32, rainfall: 5, humidity: 60, wind: 12, advisory: 'Favorable conditions. Good for groundnut and soybean cultivation.' }
+                }
+            },
+            'rajasthan': {
+                cities: ['Jaipur', 'Jodhpur', 'Udaipur', 'Bikaner'],
+                weather: {
+                    'Jaipur': { temp: 36, rainfall: 2, humidity: 40, wind: 10, advisory: 'Very hot and dry. Critical irrigation needed. Mulch heavily to conserve moisture.' },
+                    'Jodhpur': { temp: 38, rainfall: 1, humidity: 35, wind: 8, advisory: 'Extreme heat. Frequent irrigation essential. Consider drought-resistant varieties.' },
+                    'Udaipur': { temp: 32, rainfall: 5, humidity: 50, wind: 12, advisory: 'Moderate conditions. Suitable for all crops. Ensure adequate water supply.' },
+                    'Bikaner': { temp: 37, rainfall: 2, humidity: 38, wind: 9, advisory: 'Hot and arid. Drip irrigation recommended. Mulching critical for moisture retention.' }
+                }
+            }
+        };
+
         const savedTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
 
@@ -996,7 +2165,6 @@
             themeToggle.textContent = newTheme === 'light' ? '🌙' : '☀️';
         });
 
-        // Update theme toggle icon on load
         themeToggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
 
         // Mobile menu toggle
@@ -1006,7 +2174,6 @@
             navMenu.classList.toggle('active');
         });
 
-        // Close menu when clicking on a link
         const navLinks = navMenu.querySelectorAll('a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -1025,6 +2192,69 @@
             });
         });
 
+        function updateCities() {
+            const state = document.getElementById('state-select').value;
+            const citySelect = document.getElementById('city-select');
+            citySelect.innerHTML = '<option value="">Select City/District</option>';
+            
+            if (state && locationData[state]) {
+                locationData[state].cities.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city.toLowerCase();
+                    option.textContent = city;
+                    citySelect.appendChild(option);
+                });
+            }
+        }
+
+        function updateWeatherCities(state) {
+            const cityDropdownMenu = document.getElementById('city-dropdown-menu');
+            const cityDropdownTrigger = document.getElementById('city-dropdown-trigger');
+            
+            cityDropdownMenu.innerHTML = '';
+            cityDropdownTrigger.querySelector('.dropdown-text').textContent = 'Select City/District';
+            
+            if (state && locationData[state]) {
+                locationData[state].cities.forEach(city => {
+                    const option = document.createElement('div');
+                    option.className = 'dropdown-option';
+                    option.innerHTML = `<span class="dropdown-option-icon">🏘️</span><span>${city}</span>`;
+                    option.onclick = () => selectCity(option, city.toLowerCase(), city);
+                    cityDropdownMenu.appendChild(option);
+                });
+            } else {
+                const option = document.createElement('div');
+                option.className = 'dropdown-option';
+                option.style.color = 'var(--text-secondary)';
+                option.style.cursor = 'default';
+                option.innerHTML = '<span>Select a state first</span>';
+                cityDropdownMenu.appendChild(option);
+            }
+        }
+
+        function updateWeatherData(city) {
+            const stateSelect = document.querySelector('[onclick*="selectState"]')?.closest('.custom-dropdown')?.querySelector('.dropdown-text')?.textContent;
+            
+            // Find the state from the trigger text
+            let selectedState = null;
+            for (const state in locationData) {
+                if (locationData[state].cities.some(c => c.toLowerCase() === city)) {
+                    selectedState = state;
+                    break;
+                }
+            }
+
+            if (selectedState && locationData[selectedState] && locationData[selectedState].weather[city.charAt(0).toUpperCase() + city.slice(1)]) {
+                const data = locationData[selectedState].weather[city.charAt(0).toUpperCase() + city.slice(1)];
+                document.getElementById('weather-location').textContent = `📍 ${city.charAt(0).toUpperCase() + city.slice(1)}, ${selectedState.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}`;
+                document.getElementById('temp-value').textContent = `${data.temp}°C`;
+                document.getElementById('rainfall-value').textContent = `${data.rainfall}mm`;
+                document.getElementById('humidity-value').textContent = `${data.humidity}%`;
+                document.getElementById('wind-value').textContent = `${data.wind} km/h`;
+                document.getElementById('advisory-text').textContent = data.advisory;
+            }
+        }
+
         // Compare crops form
         const compareForm = document.getElementById('compare-form');
         compareForm.addEventListener('submit', (e) => {
@@ -1039,7 +2269,6 @@
                 return;
             }
 
-            // Mock calculation with INR currency
             const cropData = {
                 groundnut: { costPerQtl: 3500, pricePerQtl: 5000 },
                 mustard: { costPerQtl: 3200, pricePerQtl: 4800 },
@@ -1114,6 +2343,171 @@
 
         document.querySelectorAll('.section, .card, .economics-card').forEach(el => {
             observer.observe(el);
+        });
+
+        // Dropdown functions
+        function toggleDropdown(trigger) {
+            const menu = trigger.nextElementSibling;
+            const isActive = menu.classList.contains('active');
+            
+            // Close all other dropdowns
+            document.querySelectorAll('.dropdown-menu.active').forEach(m => {
+                if (m !== menu) {
+                    m.classList.remove('active');
+                    m.previousElementSibling.classList.remove('active');
+                }
+            });
+
+            // Toggle current dropdown
+            menu.classList.toggle('active');
+            trigger.classList.toggle('active');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.custom-dropdown')) {
+                document.querySelectorAll('.dropdown-menu.active').forEach(menu => {
+                    menu.classList.remove('active');
+                    menu.previousElementSibling.classList.remove('active');
+                });
+            }
+        });
+
+        function selectState(option, stateValue, stateName) {
+            const trigger = option.closest('.dropdown-menu').previousElementSibling;
+            trigger.querySelector('.dropdown-text').textContent = stateName;
+            trigger.classList.remove('active');
+            option.closest('.dropdown-menu').classList.remove('active');
+
+            // Mark as selected
+            option.closest('.dropdown-menu').querySelectorAll('.dropdown-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            option.classList.add('selected');
+
+            // Update city dropdown
+            updateWeatherCities(stateValue);
+        }
+
+        function selectCity(option, cityValue, cityName) {
+            const trigger = option.closest('.dropdown-menu').previousElementSibling;
+            trigger.querySelector('.dropdown-text').textContent = cityName;
+            trigger.classList.remove('active');
+            option.closest('.dropdown-menu').classList.remove('active');
+
+            // Mark as selected
+            option.closest('.dropdown-menu').querySelectorAll('.dropdown-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            option.classList.add('selected');
+
+            // Update weather data
+            updateWeatherData(cityValue);
+        }
+
+        function selectMarketState(option, stateValue, stateName) {
+            const trigger = option.closest('.dropdown-menu').previousElementSibling;
+            trigger.querySelector('.dropdown-text').textContent = stateName;
+            trigger.classList.remove('active');
+            option.closest('.dropdown-menu').classList.remove('active');
+
+            // Mark as selected
+            option.closest('.dropdown-menu').querySelectorAll('.dropdown-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            option.classList.add('selected');
+
+            // Update city dropdown
+            updateMarketCities(stateValue);
+        }
+
+        function updateMarketCities(state) {
+            const cityDropdownMenu = document.getElementById('market-city-dropdown-menu');
+            const cityDropdownTrigger = document.getElementById('market-city-dropdown-trigger');
+            
+            cityDropdownMenu.innerHTML = '';
+            cityDropdownTrigger.querySelector('.dropdown-text').textContent = 'Select City/District';
+            
+            if (state && locationData[state]) {
+                locationData[state].cities.forEach(city => {
+                    const option = document.createElement('div');
+                    option.className = 'dropdown-option';
+                    option.innerHTML = `<span class="dropdown-option-icon">🏘️</span><span>${city}</span>`;
+                    option.onclick = () => selectMarketCity(option, city.toLowerCase(), city);
+                    cityDropdownMenu.appendChild(option);
+                });
+            } else {
+                const option = document.createElement('div');
+                option.className = 'dropdown-option';
+                option.style.color = 'var(--text-secondary)';
+                option.style.cursor = 'default';
+                option.innerHTML = '<span>Select a state first</span>';
+                cityDropdownMenu.appendChild(option);
+            }
+        }
+
+        function selectMarketCity(option, cityValue, cityName) {
+            const trigger = option.closest('.dropdown-menu').previousElementSibling;
+            trigger.querySelector('.dropdown-text').textContent = cityName;
+            trigger.classList.remove('active');
+            option.closest('.dropdown-menu').classList.remove('active');
+
+            // Mark as selected
+            option.closest('.dropdown-menu').querySelectorAll('.dropdown-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            option.classList.add('selected');
+
+            // Update price data based on selected city (can be enhanced with API data)
+            console.log('Market data updated for:', cityName);
+        }
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function startExploring() {
+            closeModal('getStartedModal');
+            document.querySelector('a[href="#market"]').click();
+        }
+
+        function scrollToSection(sectionId) {
+            closeModal('learnMoreModal');
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal.id);
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('.hero .btn');
+            if (buttons.length >= 2) {
+                buttons[0].textContent = 'Get Started';
+                buttons[0].onclick = () => openModal('getStartedModal');
+                buttons[1].textContent = 'Learn More';
+                buttons[1].onclick = () => openModal('learnMoreModal');
+            }
         });
     </script>
 </body>
